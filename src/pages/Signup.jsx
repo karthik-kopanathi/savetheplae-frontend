@@ -45,7 +45,7 @@ const Signup = () => {
 
   const handleSubmit = async (role) => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, role }),
@@ -157,7 +157,7 @@ const Signup = () => {
               <button
                 type="button"
                 className="google-btn"
-                onClick={() => window.open("http://localhost:5000/api/auth/google", "_self")}
+                onClick={() => window.open("https://savetheplae-backend.onrender.com/api/auth/google", "_self")}
               >
                 <FcGoogle /> Continue with Google
               </button>

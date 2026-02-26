@@ -15,7 +15,7 @@ const NgoDonationsReceived = () => {
   useEffect(() => {
     const fetchDonations = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/dashboard/ngo-dashboard", {
+        const res = await fetch("https://savetheplae-backend.onrender.com/api/dashboard/ngo-dashboard", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

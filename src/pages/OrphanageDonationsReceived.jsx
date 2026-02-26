@@ -20,7 +20,7 @@ const OrphanageDonationsReceived = () => {
 
   const fetchDonations = useCallback(async () => {
     try {
-      const res  = await fetch("http://localhost:5000/api/dashboard/orphanage-dashboard", {
+      const res  = await fetch("https://savetheplae-backend.onrender.com/api/dashboard/orphanage-dashboard", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();

@@ -26,7 +26,7 @@ const NgoSidebar = () => {
   useEffect(() => {
     const fetchUnread = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/notifications", {
+        const res = await fetch("https://savetheplae-backend.onrender.com/api/notifications", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -159,19 +159,19 @@ const NgoDashboard = () => {
     try {
       setLoading(true);
 
-      const ngoRes = await fetch("http://localhost:5000/api/dashboard/me", {
+      const ngoRes = await fetch("https://savetheplae-backend.onrender.com/api/dashboard/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const ngoData = await ngoRes.json();
       setNgo(ngoData);
 
-      const pendingRes = await fetch("http://localhost:5000/api/donations/pending", {
+      const pendingRes = await fetch("https://savetheplae-backend.onrender.com/api/donations/pending", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const pendingData = await pendingRes.json();
       setAvailableDonations(pendingData.filter(d => d.city === ngoData.city));
 
-      const myDonationsRes = await fetch("http://localhost:5000/api/dashboard/ngo-dashboard", {
+      const myDonationsRes = await fetch("https://savetheplae-backend.onrender.com/api/dashboard/ngo-dashboard", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const myData = await myDonationsRes.json();
@@ -352,7 +352,7 @@ const NgoDashboard = () => {
                     className="ngo-btn-secondary"
                     onClick={async () => {
                       try {
-                        await fetch(`http://localhost:5000/api/donations/${d._id}/accept`, {
+                        await fetch(`https://savetheplae-backend.onrender.com/api/donations/${d._id}/accept`, {
                           method: "PUT",
                           headers: { Authorization: `Bearer ${token}` },
                         });

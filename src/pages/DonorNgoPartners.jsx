@@ -11,7 +11,7 @@ const DonorNgoPartners = () => {
   useEffect(() => {
     const fetch_ = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/partners", {
+        const res = await fetch("https://savetheplae-backend.onrender.com/api/partners", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -59,7 +59,7 @@ const DonorNgoPartners = () => {
             const profileImg = ngo.profilePic
               ? ngo.profilePic.startsWith("http")
                 ? ngo.profilePic
-                : `http://localhost:5000/${ngo.profilePic}`
+                : `https://savetheplae-backend.onrender.com/${ngo.profilePic}`
               : null;
 
             return (

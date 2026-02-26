@@ -31,7 +31,7 @@ const PublicNavbar = () => {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/dashboard/me", {
+        const res = await fetch("https://savetheplae-backend.onrender.com/api/dashboard/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -162,7 +162,7 @@ const PublicNavbar = () => {
   const profileImage = user?.profilePic
     ? user.profilePic.startsWith("http")
       ? `${user.profilePic}?t=${Date.now()}`
-      : `http://localhost:5000/${user.profilePic}?t=${Date.now()}`
+      : `https://savetheplae-backend.onrender.com/${user.profilePic}?t=${Date.now()}`
     : defaultAvatar;
 
   /* ========================= */

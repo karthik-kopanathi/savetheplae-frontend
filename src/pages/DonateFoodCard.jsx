@@ -21,7 +21,7 @@ const DonateFoodCard = ({ onClose, refresh }) => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/donations", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/donations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

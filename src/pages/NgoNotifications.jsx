@@ -12,7 +12,7 @@ const NgoNotifications = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/notifications", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/notifications", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -26,7 +26,7 @@ const NgoNotifications = () => {
 
   useEffect(() => {
     fetchNotifications();
-    fetch("http://localhost:5000/api/notifications/mark-read", {
+    fetch("https://savetheplae-backend.onrender.com/api/notifications/mark-read", {
       method: "PUT",
       headers: { Authorization: `Bearer ${token}` },
     }).catch(console.error);
@@ -39,7 +39,7 @@ const NgoNotifications = () => {
 
     setDonating(p => ({ ...p, [notif._id]: true }));
     try {
-      const res = await fetch("http://localhost:5000/api/orphanage/donate-to-orphanage", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/orphanage/donate-to-orphanage", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify({ donationId, orphanageId }),
@@ -56,7 +56,7 @@ const NgoNotifications = () => {
 
   const handleClearAll = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/notifications/clear-all", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/notifications/clear-all", {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

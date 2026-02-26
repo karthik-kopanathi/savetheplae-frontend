@@ -15,7 +15,7 @@ const Notifications = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/notifications", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/notifications", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -29,7 +29,7 @@ const Notifications = () => {
 
   useEffect(() => {
     fetchNotifications();
-    fetch("http://localhost:5000/api/notifications/mark-read", {
+    fetch("https://savetheplae-backend.onrender.com/api/notifications/mark-read", {
       method: "PUT",
       headers: { Authorization: `Bearer ${token}` },
     }).catch(console.error);
@@ -42,7 +42,7 @@ const Notifications = () => {
     setConfirming(p => ({ ...p, [notif._id]: true }));
     try {
       const res = await fetch(
-        `http://localhost:5000/api/donations/${donationId}/confirm-completion`,
+        `https://savetheplae-backend.onrender.com/api/donations/${donationId}/confirm-completion`,
         {
           method: "PUT",
           headers: { Authorization: `Bearer ${token}` },
@@ -50,7 +50,7 @@ const Notifications = () => {
       );
       const data = await res.json();
       if (res.ok) {
-        await fetch(`http://localhost:5000/api/notifications/${notif._id}/confirm`, {
+        await fetch(`https://savetheplae-backend.onrender.com/api/notifications/${notif._id}/confirm`, {
           method: "PUT",
           headers: { Authorization: `Bearer ${token}` },
         }).catch(console.error);
@@ -64,7 +64,7 @@ const Notifications = () => {
 
   const handleClearAll = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/notifications/clear-all", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/notifications/clear-all", {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

@@ -22,7 +22,7 @@ const NgoSettings = () => {
   useEffect(() => {
     const fetchNgo = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/dashboard/me", {
+        const res = await fetch("https://savetheplae-backend.onrender.com/api/dashboard/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -81,7 +81,7 @@ const NgoSettings = () => {
       data.append("city", formData.city);
       if (formData.profilePic) data.append("profilePic", formData.profilePic);
 
-      const profileRes = await fetch("http://localhost:5000/api/profile/update", {
+      const profileRes = await fetch("https://savetheplae-backend.onrender.com/api/profile/update", {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
         body: data,
@@ -94,7 +94,7 @@ const NgoSettings = () => {
       setNgo(profileUpdated.user || profileUpdated);
 
       if (isChangingPassword) {
-        const pwRes = await fetch("http://localhost:5000/api/profile/change-password", {
+        const pwRes = await fetch("https://savetheplae-backend.onrender.com/api/profile/change-password", {
           method: "PUT",
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
           body: JSON.stringify({ oldPassword, newPassword }),
@@ -118,7 +118,7 @@ const NgoSettings = () => {
   if (!ngo) return null;
 
   const profileImage = ngo?.profilePic
-    ? ngo.profilePic.startsWith("http") ? ngo.profilePic : `http://localhost:5000/${ngo.profilePic}`
+    ? ngo.profilePic.startsWith("http") ? ngo.profilePic : `https://savetheplae-backend.onrender.com/${ngo.profilePic}`
     : defaultAvatar;
 
   return (

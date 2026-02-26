@@ -22,7 +22,7 @@ const OrphanageSettings = () => {
   useEffect(() => {
     const fetchOrphanage = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/dashboard/me", {
+        const res = await fetch("https://savetheplae-backend.onrender.com/api/dashboard/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -81,7 +81,7 @@ const OrphanageSettings = () => {
       data.append("city",          formData.city);
       if (formData.profilePic) data.append("profilePic", formData.profilePic);
 
-      const profileRes = await fetch("http://localhost:5000/api/profile/update", {
+      const profileRes = await fetch("https://savetheplae-backend.onrender.com/api/profile/update", {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
         body: data,
@@ -94,7 +94,7 @@ const OrphanageSettings = () => {
       setOrphanage(profileUpdated.user || profileUpdated);
 
       if (isChangingPassword) {
-        const pwRes = await fetch("http://localhost:5000/api/profile/change-password", {
+        const pwRes = await fetch("https://savetheplae-backend.onrender.com/api/profile/change-password", {
           method: "PUT",
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
           body: JSON.stringify({ oldPassword, newPassword }),
@@ -120,7 +120,7 @@ const OrphanageSettings = () => {
   const profileImage = orphanage?.profilePic
     ? orphanage.profilePic.startsWith("http")
       ? orphanage.profilePic
-      : `http://localhost:5000/${orphanage.profilePic}`
+      : `https://savetheplae-backend.onrender.com/${orphanage.profilePic}`
     : defaultAvatar;
 
   return (

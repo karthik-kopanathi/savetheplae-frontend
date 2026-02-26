@@ -21,7 +21,7 @@ const DonorSettings = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/dashboard/me", {
+        const res = await fetch("https://savetheplae-backend.onrender.com/api/dashboard/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -80,7 +80,7 @@ const DonorSettings = () => {
       data.append("donorType", formData.donorType);
       if (formData.profilePic) data.append("profilePic", formData.profilePic);
 
-      const profileRes = await fetch("http://localhost:5000/api/profile/update", {
+      const profileRes = await fetch("https://savetheplae-backend.onrender.com/api/profile/update", {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
         body: data,
@@ -93,7 +93,7 @@ const DonorSettings = () => {
       setUser(profileUpdated.user || profileUpdated);
 
       if (isChangingPassword) {
-        const pwRes = await fetch("http://localhost:5000/api/profile/change-password", {
+        const pwRes = await fetch("https://savetheplae-backend.onrender.com/api/profile/change-password", {
           method: "PUT",
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
           body: JSON.stringify({ oldPassword, newPassword }),
@@ -117,7 +117,7 @@ const DonorSettings = () => {
   if (!user) return null;
 
   const profileImage = user?.profilePic
-    ? user.profilePic.startsWith("http") ? user.profilePic : `http://localhost:5000/${user.profilePic}`
+    ? user.profilePic.startsWith("http") ? user.profilePic : `https://savetheplae-backend.onrender.com/${user.profilePic}`
     : defaultAvatar;
 
   return (

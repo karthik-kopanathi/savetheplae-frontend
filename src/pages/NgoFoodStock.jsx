@@ -66,7 +66,7 @@ const OrphanagePickerModal = ({ item, orphanages, onClose, onDonate, donating })
         ) : (
           orphanages.map(o => {
             const pic = o.profilePic
-              ? o.profilePic.startsWith("http") ? o.profilePic : `http://localhost:5000/${o.profilePic}`
+              ? o.profilePic.startsWith("http") ? o.profilePic : `https://savetheplae-backend.onrender.com/${o.profilePic}`
               : null;
             return (
               <div className="nfs-orphanage-card" key={o._id}>
@@ -111,7 +111,7 @@ const NgoFoodStock = () => {
 
   const fetchStock = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/orphanage/ngo-food-stock", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/orphanage/ngo-food-stock", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -123,7 +123,7 @@ const NgoFoodStock = () => {
 
   const fetchOrphanages = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/orphanage/city-orphanages", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/orphanage/city-orphanages", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -137,7 +137,7 @@ const NgoFoodStock = () => {
     if (!pickerItem) return;
     setDonating(orphanageId);
     try {
-      const res = await fetch("http://localhost:5000/api/orphanage/donate-item", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/orphanage/donate-item", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify({

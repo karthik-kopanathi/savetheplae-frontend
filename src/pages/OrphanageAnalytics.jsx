@@ -43,8 +43,8 @@ const OrphanageAnalytics = () => {
     const fetchAll = async () => {
       try {
         const [profileRes, dashRes] = await Promise.all([
-          fetch("http://localhost:5000/api/dashboard/me",                      { headers: { Authorization: `Bearer ${token}` } }),
-          fetch("http://localhost:5000/api/dashboard/orphanage-dashboard",     { headers: { Authorization: `Bearer ${token}` } }),
+          fetch("https://savetheplae-backend.onrender.com/api/dashboard/me",                      { headers: { Authorization: `Bearer ${token}` } }),
+          fetch("https://savetheplae-backend.onrender.com/api/dashboard/orphanage-dashboard",     { headers: { Authorization: `Bearer ${token}` } }),
         ]);
         const profile = await profileRes.json();
         setOrphanage(profile.user || profile);

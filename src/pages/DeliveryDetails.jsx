@@ -18,7 +18,7 @@ const DeliveryDetails = () => {
 
   const fetchDeliveries = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/orphanage/deliveries", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/orphanage/deliveries", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -32,7 +32,7 @@ const DeliveryDetails = () => {
   const handleDeliveryCompleted = async (donationId) => {
     setCompleting(p => ({ ...p, [donationId]: true }));
     try {
-      const res = await fetch("http://localhost:5000/api/orphanage/delivery-completed", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/orphanage/delivery-completed", {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify({ donationId }),
@@ -67,7 +67,7 @@ const DeliveryDetails = () => {
     const isLocalDone  = completed[d._id];
 
     const orphanageImg = orphanage?.profilePic
-      ? orphanage.profilePic.startsWith("http") ? orphanage.profilePic : `http://localhost:5000/${orphanage.profilePic}`
+      ? orphanage.profilePic.startsWith("http") ? orphanage.profilePic : `https://savetheplae-backend.onrender.com/${orphanage.profilePic}`
       : null;
 
     return (

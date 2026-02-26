@@ -42,7 +42,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, role }),
@@ -69,7 +69,7 @@ const Login = () => {
   // 🔹 Google login
   const handleGoogleLogin = () => {
     // Backend should redirect to /login?token=...
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = "https://savetheplae-backend.onrender.com/api/auth/google";
   };
 
   return (

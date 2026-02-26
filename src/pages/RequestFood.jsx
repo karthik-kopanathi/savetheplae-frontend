@@ -63,7 +63,7 @@ const NgoCard = ({ ngo, requesting, requested, onRequest, outOfCity = false }) =
       <div className="rf-ngo-hero__left">
         <div className="rf-ngo-avatar">
           {ngo.profilePic ? (
-            <img src={ngo.profilePic.startsWith("http") ? ngo.profilePic : `http://localhost:5000/${ngo.profilePic}`} alt={ngo.ngoName} />
+            <img src={ngo.profilePic.startsWith("http") ? ngo.profilePic : `https://savetheplae-backend.onrender.com/${ngo.profilePic}`} alt={ngo.ngoName} />
           ) : (
             <span>{(ngo.ngoName || "NG").slice(0, 2).toUpperCase()}</span>
           )}
@@ -177,7 +177,7 @@ const RequestFood = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/orphanage/ngo-city-stock", {
+    fetch("https://savetheplae-backend.onrender.com/api/orphanage/ngo-city-stock", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(r => r.json())
@@ -193,7 +193,7 @@ const RequestFood = () => {
     }
     setLoadingOut(true);
     try {
-      const res  = await fetch("http://localhost:5000/api/orphanage/ngo-out-of-city-stock", {
+      const res  = await fetch("https://savetheplae-backend.onrender.com/api/orphanage/ngo-out-of-city-stock", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -210,7 +210,7 @@ const RequestFood = () => {
     const key = `${donationId}_${itemIndex}`;
     setRequesting(p => ({ ...p, [key]: true }));
     try {
-      const res = await fetch("http://localhost:5000/api/orphanage/request-food", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/orphanage/request-food", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify({ donationId, itemIndex, ngoId }),

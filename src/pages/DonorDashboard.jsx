@@ -43,7 +43,7 @@ const DashboardSidebar = () => {
   useEffect(() => {
     const fetchUnread = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/notifications", {
+        const res = await fetch("https://savetheplae-backend.onrender.com/api/notifications", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -168,13 +168,13 @@ const DonorDashboard = () => {
     try {
       setLoading(true);
 
-      const userRes = await fetch("http://localhost:5000/api/dashboard/me", {
+      const userRes = await fetch("https://savetheplae-backend.onrender.com/api/dashboard/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const userData = await userRes.json();
       setUser(userData);
 
-      const donationsRes = await fetch("http://localhost:5000/api/donations/my", {
+      const donationsRes = await fetch("https://savetheplae-backend.onrender.com/api/donations/my", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const donationData = await donationsRes.json();

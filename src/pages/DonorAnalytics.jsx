@@ -50,7 +50,7 @@ const DonorAnalytics = () => {
   useEffect(() => {
     const fetchDonations = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/donations/my", {
+        const res = await fetch("https://savetheplae-backend.onrender.com/api/donations/my", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

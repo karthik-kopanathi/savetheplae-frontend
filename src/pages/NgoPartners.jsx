@@ -12,7 +12,7 @@ const NgoPartners = () => {
   useEffect(() => {
     const fetchNgos = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/partners/ngos");
+        const res = await fetch("https://savetheplae-backend.onrender.com/api/partners/ngos");
         const data = await res.json();
         setNgos(data);
         setFiltered(data);
@@ -81,7 +81,7 @@ const NgoPartners = () => {
             const pic = ngo.profilePic
               ? ngo.profilePic.startsWith("http")
                 ? ngo.profilePic
-                : `http://localhost:5000/${ngo.profilePic}`
+                : `https://savetheplae-backend.onrender.com/${ngo.profilePic}`
               : defaultAvatar;
 
             return (

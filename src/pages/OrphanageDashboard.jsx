@@ -29,7 +29,7 @@ const OrphanageSidebar = () => {
   useEffect(() => {
     const fetchUnread = async () => {
       try {
-        const res  = await fetch("http://localhost:5000/api/notifications", {
+        const res  = await fetch("https://savetheplae-backend.onrender.com/api/notifications", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -145,10 +145,10 @@ const OrphanageDashboard = () => {
 
     try {
       const [profileRes, dashRes] = await Promise.all([
-        fetch("http://localhost:5000/api/dashboard/me", {
+        fetch("https://savetheplae-backend.onrender.com/api/dashboard/me", {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch("http://localhost:5000/api/dashboard/orphanage-dashboard", {
+        fetch("https://savetheplae-backend.onrender.com/api/dashboard/orphanage-dashboard", {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);

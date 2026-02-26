@@ -20,7 +20,7 @@ const PickupDetails = () => {
 
   const fetchPickups = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/dashboard/ngo-dashboard", {
+      const res = await fetch("https://savetheplae-backend.onrender.com/api/dashboard/ngo-dashboard", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -40,7 +40,7 @@ const PickupDetails = () => {
   const handleCompletePickup = async (donationId) => {
     try {
       setRequestingId(donationId);
-      const res = await fetch(`http://localhost:5000/api/donations/${donationId}/request-completion`, {
+      const res = await fetch(`https://savetheplae-backend.onrender.com/api/donations/${donationId}/request-completion`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
       });

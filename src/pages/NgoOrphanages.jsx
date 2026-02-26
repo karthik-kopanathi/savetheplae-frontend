@@ -8,7 +8,7 @@ const NgoOrphanages = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/orphanage/city-orphanages", {
+    fetch("https://savetheplae-backend.onrender.com/api/orphanage/city-orphanages", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(r => r.json())
@@ -41,7 +41,7 @@ const NgoOrphanages = () => {
         <div className="nor-grid">
           {orphanages.map((o, idx) => {
             const pic = o.profilePic
-              ? o.profilePic.startsWith("http") ? o.profilePic : `http://localhost:5000/${o.profilePic}`
+              ? o.profilePic.startsWith("http") ? o.profilePic : `https://savetheplae-backend.onrender.com/${o.profilePic}`
               : null;
             return (
               <div className="nor-card" key={o._id} style={{ "--i": idx }}>

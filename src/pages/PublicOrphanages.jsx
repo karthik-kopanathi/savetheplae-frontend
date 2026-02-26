@@ -13,7 +13,7 @@ const PublicOrphanages = () => {
   useEffect(() => {
     const fetchOrphanages = async () => {
       try {
-        const res  = await fetch("http://localhost:5000/api/public/orphanages");
+        const res  = await fetch("https://savetheplae-backend.onrender.com/api/public/orphanages");
         const data = await res.json();
         const list = data.orphanages || data || [];
         setOrphanages(list);
@@ -106,7 +106,7 @@ const PublicOrphanages = () => {
             const pic = o.profilePic
               ? o.profilePic.startsWith("http")
                 ? o.profilePic
-                : `http://localhost:5000/${o.profilePic}`
+                : `https://savetheplae-backend.onrender.com/${o.profilePic}`
               : null;
 
             return (

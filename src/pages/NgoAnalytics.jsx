@@ -43,8 +43,8 @@ const NgoAnalytics = () => {
     const fetchAll = async () => {
       try {
         const [profileRes, donRes] = await Promise.all([
-          fetch("http://localhost:5000/api/dashboard/me",           { headers: { Authorization: `Bearer ${token}` } }),
-          fetch("http://localhost:5000/api/dashboard/ngo-dashboard", { headers: { Authorization: `Bearer ${token}` } }),
+          fetch("https://savetheplae-backend.onrender.com/api/dashboard/me",           { headers: { Authorization: `Bearer ${token}` } }),
+          fetch("https://savetheplae-backend.onrender.com/api/dashboard/ngo-dashboard", { headers: { Authorization: `Bearer ${token}` } }),
         ]);
         const profile = await profileRes.json();
         setNgo(profile);
