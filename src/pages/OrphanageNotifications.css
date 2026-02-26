@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ─── VARIABLES ─── */
+:root {
+  --orn-forest:        #1a2e1a;
+  --orn-leaf:          #2d5a27;
+  --orn-leaf-light:    #e8f0e8;
+  --orn-cream:         #f5f0e8;
+  --orn-warm-white:    #faf8f3;
+  --orn-orange:        #e8651a;
+  --orn-orange-light:  #fef0e7;
+  --orn-gold:          #c9a84c;
+  --orn-border:        #e8e3d8;
+  --orn-text-dark:     #1a1a1a;
+  --orn-text-mid:      #3a3a2a;
+  --orn-text-muted:    #7a7a6a;
+  --orn-shadow-sm:     0 2px 8px rgba(26,46,26,0.06);
+  --orn-shadow-md:     0 8px 28px rgba(26,46,26,0.10);
+}
+
+/* ─── PAGE ─── */
+.orn-page {
+  margin-top: 50px;
+  background: var(--orn-warm-white);
+  min-height: 100vh;
+  padding: 48px 56px 56px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--orn-text-dark);
+  animation: orn-fadeIn 0.5s ease forwards;
+}
+
+@keyframes orn-fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── HEADER ─── */
+.orn-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--orn-border);
+}
+
+.orn-header__left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.orn-header__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.orn-header__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--orn-forest);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+}
+
+.orn-header__title svg { color: var(--orn-orange); }
+
+.orn-header__sub {
+  font-size: 13px;
+  color: var(--orn-text-muted);
+  margin: 0;
+}
+
+/* ─── CLEAR BUTTON ─── */
+.orn-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: white;
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.orn-clear-btn:hover:not(:disabled) {
+  background: #fef2f2;
+  border-color: #dc2626;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.15);
+  transform: translateY(-1px);
+}
+
+.orn-clear-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── LIST ─── */
+.orn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ─── NOTIFICATION CARD ─── */
+.orn-notif {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: white;
+  border: 1px solid var(--orn-border);
+  border-left: 4px solid var(--orn-border);
+  border-radius: 12px;
+  padding: 18px 22px;
+  box-shadow: var(--orn-shadow-sm);
+  transition: all 0.22s ease;
+  position: relative;
+}
+
+.orn-notif:hover {
+  box-shadow: var(--orn-shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ─── UNREAD ─── */
+.orn-notif--unread {
+  border-left-color: var(--orn-orange);
+  background: #fffcfa;
+}
+
+/* ─── LEFT ICON WRAP ─── */
+.orn-notif__left {
+  flex-shrink: 0;
+}
+
+.orn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* ─── BODY ─── */
+.orn-notif__body {
+  flex: 1;
+}
+
+.orn-notif__msg {
+  font-size: 14px;
+  color: var(--orn-text-mid);
+  margin: 0 0 6px;
+  line-height: 1.6;
+}
+
+.orn-notif--unread .orn-notif__msg {
+  color: var(--orn-text-dark);
+  font-weight: 500;
+}
+
+.orn-notif__time {
+  font-size: 12px;
+  color: var(--orn-text-muted);
+  letter-spacing: 0.3px;
+}
+
+/* ─── UNREAD DOT ─── */
+.orn-unread-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orn-orange);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* ─── BORDER COLORS BY TYPE ─── */
+.orn-notif--orange { border-left-color: var(--orn-orange); }
+.orn-notif--green  { border-left-color: var(--orn-leaf); }
+.orn-notif--red    { border-left-color: #dc2626; }
+.orn-notif--blue   { border-left-color: #3b82f6; }
+
+/* ─── ICON COLORS BY TYPE ─── */
+.orn-icon--orange { color: var(--orn-orange); background: var(--orn-orange-light); }
+.orn-icon--green  { color: var(--orn-leaf);   background: var(--orn-leaf-light); }
+.orn-icon--red    { color: #dc2626;            background: #fef2f2; }
+.orn-icon--blue   { color: #3b82f6;            background: #eff6ff; }
+
+/* ─── ACTION AREA ─── */
+.orn-notif__action {
+  margin-top: 12px;
+}
+
+/* ─── CONFIRM BUTTON ─── */
+.orn-confirm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--orn-leaf);
+  color: white;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  box-shadow: 0 3px 10px rgba(45,90,39,0.25);
+}
+
+.orn-confirm-btn:hover:not(:disabled) {
+  background: var(--orn-forest);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(26,46,26,0.3);
+}
+
+.orn-confirm-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ─── CONFIRMED BADGE ─── */
+.orn-confirmed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--orn-leaf-light);
+  color: var(--orn-leaf);
+  border: 1px solid rgba(45,90,39,0.25);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ─── COUNT BADGE ─── */
+.orn-count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--orn-orange-light);
+  color: var(--orn-orange);
+  border: 1px solid rgba(232,101,26,0.2);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+/* ─── EMPTY ─── */
+.orn-empty {
+  background: white;
+  border: 1px dashed var(--orn-border);
+  border-radius: 14px;
+  padding: 80px 40px;
+  text-align: center;
+  color: var(--orn-text-muted);
+  font-size: 15px;
+}
+
+.orn-empty::before {
+  content: '🔔';
+  display: block;
+  font-size: 40px;
+  margin-bottom: 14px;
+}
+
+/* ─── LOADER ─── */
+.orn-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--orn-orange);
+  animation: orn-pulse 1.5s infinite;
+  background: var(--orn-warm-white);
+}
+
+@keyframes orn-pulse {
+  0%   { opacity: 0.5; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* ─── DARK MODE ─── */
+body.orphanage-dark .orn-page           { background: #0f1117; color: #f1f5f9; }
+body.orphanage-dark .orn-header         { border-color: #252836; }
+body.orphanage-dark .orn-header__title  { color: #f1f5f9; }
+body.orphanage-dark .orn-header__sub    { color: #64748b; }
+body.orphanage-dark .orn-notif          { background: #1a1d26; border-color: #252836; border-left-color: #252836; }
+body.orphanage-dark .orn-notif--unread  { background: #1c1f2e; border-left-color: var(--orn-orange); }
+body.orphanage-dark .orn-notif__msg     { color: #94a3b8; }
+body.orphanage-dark .orn-notif--unread .orn-notif__msg { color: #f1f5f9; }
+body.orphanage-dark .orn-notif__time    { color: #475569; }
+body.orphanage-dark .orn-empty          { background: #1a1d26; border-color: #252836; }
+body.orphanage-dark .orn-loader         { background: #0f1117; }
+body.orphanage-dark .orn-confirm-btn    { box-shadow: none; }
+body.orphanage-dark .orn-confirmed-badge { background: rgba(45,90,39,0.15); }
+body.orphanage-dark .orn-count-badge    { background: rgba(232,101,26,0.1); border-color: rgba(232,101,26,0.2); }
+body.orphanage-dark .orn-clear-btn      { background: #1a1d26; border-color: rgba(220,38,38,0.3); color: #f87171; }
+body.orphanage-dark .orn-clear-btn:hover:not(:disabled) { background: rgba(220,38,38,0.1); border-color: #f87171; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .orn-page   { padding: 32px 20px; }
+  .orn-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .orn-header__right { align-self: flex-start; }
+  .orn-notif  { padding: 14px 16px; }
+}

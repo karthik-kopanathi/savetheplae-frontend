@@ -1,0 +1,18 @@
+<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- background circle fill -->
+  <circle cx="20" cy="22" r="14" fill="#1a2e1a"/>
+  <!-- orange ring -->
+  <circle cx="20" cy="22" r="14" stroke="#e8651a" stroke-width="1.5" fill="none"/>
+  <!-- fork tines -->
+  <line x1="11" y1="10" x2="11" y2="14" stroke="#f5f0e8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="13" y1="10" x2="13" y2="14" stroke="#f5f0e8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="15" y1="10" x2="15" y2="14" stroke="#f5f0e8" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- fork handle -->
+  <line x1="13" y1="10" x2="13" y2="20" stroke="#f5f0e8" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- plant stem -->
+  <line x1="27" y1="15" x2="27" y2="22" stroke="#f5f0e8" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- plant bud -->
+  <ellipse cx="27" cy="12" rx="2.5" ry="3" fill="#e8651a" opacity="0.85"/>
+  <!-- heart/leaf -->
+  <path d="M18.5 21.5 C18.5 20 20 19 20 19 C20 19 21.5 20 21.5 21.5 C21.5 23 20 24 20 24 C20 24 18.5 23 18.5 21.5Z" fill="#e8651a"/>
+</svg>

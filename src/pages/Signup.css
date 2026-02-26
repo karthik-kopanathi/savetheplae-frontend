@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ─── CSS VARIABLES ─── */
+:root {
+  --su-forest:        #1a2e1a;
+  --su-leaf:          #2d5a27;
+  --su-leaf-light:    #e8f0e8;
+  --su-cream:         #f5f0e8;
+  --su-warm-white:    #faf8f3;
+  --su-orange:        #e8651a;
+  --su-orange-light:  #fef0e7;
+  --su-gold:          #c9a84c;
+  --su-border:        rgba(245, 240, 232, 0.15);
+  --su-border-hover:  rgba(245, 240, 232, 0.35);
+  --su-text:          rgba(245, 240, 232, 0.85);
+  --su-text-muted:    rgba(245, 240, 232, 0.5);
+}
+
+/* ─── RESET ─── */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ─── PAGE BACKGROUND ─── */
+.Signup {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1a2e1a 0%, #2d5a27 50%, #1a2e1a 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Subtle radial depth glow */
+.Signup::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(232, 101, 26, 0.08) 0%,
+    transparent 100%
+  );
+  z-index: 0;
+}
+
+/* ─── WRAPPER ─── */
+.wrapper {
+  position: relative;
+  z-index: 1;
+  width: 860px;
+  height: 420px;
+  background: rgba(26, 46, 26, 0.45);
+  border: 1px solid var(--su-border);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(245, 240, 232, 0.08);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: height 0.35s ease;
+  margin-top: 50px;
+}
+
+/* ─── ACTIVE HEIGHTS ─── */
+.wrapper.active.donor     { height: 510px;margin-top: 50px; }
+.wrapper.active.ngo       { height: 490px;margin-top: 50px; }
+.wrapper.active.orphanage { height: 510px;margin-top: 50px; }
+
+/* ─── FORM BOX ─── */
+.form-box {
+  position: absolute;
+  inset: 0;
+  padding: 44px 48px;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  color: var(--su-text);
+}
+
+/* ─── ROLE BOX ─── */
+.form-box.role {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 3;
+}
+
+/* ─── SLIDE OUT ROLE ─── */
+.wrapper.active .form-box.role {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ─── REGISTER VISIBLE ─── */
+.form-box.register.visible {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 2;
+}
+
+/* ─── HEADINGS ─── */
+h1 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin: 0 0 28px 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--su-cream);
+  letter-spacing: 0.2px;
+}
+
+/* ─── ROLE CARDS ─── */
+.role-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.role-card {
+  width: 190px;
+  padding: 28px 20px;
+  text-align: center;
+  border-radius: 14px;
+  background: rgba(245, 240, 232, 0.07);
+  border: 1px solid var(--su-border);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: var(--su-text);
+}
+
+.role-card:hover {
+  transform: translateY(-6px);
+  background: rgba(232, 101, 26, 0.15);
+  border-color: rgba(232, 101, 26, 0.5);
+  box-shadow: 0 12px 32px rgba(232, 101, 26, 0.2);
+}
+
+.role-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  margin: 10px 0 6px;
+  color: var(--su-cream);
+}
+
+.role-card p {
+  font-size: 13px;
+  color: var(--su-text-muted);
+  margin: 0;
+}
+
+.role-icon {
+  font-size: 32px;
+  color: var(--su-orange);
+}
+
+/* ─── ROLE LOGIN ─── */
+.role-login {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  font-size: 14px;
+  color: var(--su-text-muted);
+}
+
+.role-login a {
+  color: var(--su-orange);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.role-login a:hover {
+  color: var(--su-gold);
+}
+
+/* ─── BACK ARROW ─── */
+.back-arrow {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  cursor: pointer;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--su-text-muted);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: color 0.2s ease;
+}
+
+.back-arrow:hover {
+  color: var(--su-cream);
+}
+
+.back-arrow svg {
+  position: relative;
+  top: 1px;
+}
+
+/* ─── FORM GRID ─── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+  position: relative;
+}
+
+.form-grid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--su-border);
+}
+
+/* ─── INPUT BOX ─── */
+.input-box {
+  position: relative;
+  height: 44px;
+  margin-bottom: 14px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--su-border);
+  outline: none;
+  background: rgba(245, 240, 232, 0.07);
+  color: var(--su-cream);
+  padding: 0 44px 0 16px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.22s ease, background 0.22s ease;
+  box-sizing: border-box;
+}
+
+.input-box input::placeholder {
+  color: var(--su-text-muted);
+}
+
+.input-box input:focus {
+  border-color: var(--su-orange);
+  background: rgba(232, 101, 26, 0.08);
+  box-shadow: 0 0 0 3px rgba(232, 101, 26, 0.12);
+}
+
+/* ─── SELECT ─── */
+.input-box select {
+  width: 100%;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--su-border);
+  outline: none;
+  background: rgba(245, 240, 232, 0.07);
+  color: var(--su-cream);
+  padding: 0 44px 0 16px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.22s ease, background 0.22s ease;
+  box-sizing: border-box;
+}
+
+.input-box select:focus {
+  border-color: var(--su-orange);
+  background: rgba(232, 101, 26, 0.08);
+  box-shadow: 0 0 0 3px rgba(232, 101, 26, 0.12);
+}
+
+.input-box select option {
+  background: var(--su-forest);
+  color: var(--su-cream);
+}
+
+/* ─── ICON ─── */
+.Signup .icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--su-text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.Signup .icon:hover {
+  color: var(--su-orange);
+}
+
+/* ─── BUTTONS ─── */
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.submit-btn,
+.google-btn {
+  width: 60%;
+  height: 44px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn {
+  background: var(--su-orange);
+  color: white;
+  box-shadow: 0 4px 14px rgba(232, 101, 26, 0.3);
+  letter-spacing: 0.3px;
+}
+
+.submit-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.28s ease;
+}
+
+.submit-btn:hover::after {
+  transform: translateX(0);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(232, 101, 26, 0.42);
+}
+
+.google-btn {
+  background: rgba(245, 240, 232, 0.95);
+  color: #3a3a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.google-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── LOGIN LINK ─── */
+.login-link {
+  font-size: 13px;
+  color: var(--su-text-muted);
+  margin: 0;
+}
+
+.login-link a {
+  color: var(--su-orange);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.login-link a:hover {
+  color: var(--su-gold);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .wrapper {
+    width: 95%;
+  }
+
+  .role-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid::after {
+    display: none;
+  }
+
+  .form-box {
+    padding: 44px 24px 24px;
+  }
+
+  .submit-btn,
+  .google-btn {
+    width: 100%;
+  }
+}

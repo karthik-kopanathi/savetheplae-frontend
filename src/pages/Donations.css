@@ -1,0 +1,60 @@
+/* ─── DONATIONS PAGE ─── */
+/* Extends DonorDashboard.css — import both in Donations.jsx */
+
+/* 4-column table override (no "Accepted By" column) */
+.donations-table .donor-table__row {
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 1.5fr;
+}
+
+/* Page subtitle */
+.donations-subtitle {
+  font-size: 13px;
+  color: var(--donor-text-muted);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+/* Total count pill */
+.donations-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--donor-orange-light);
+  color: var(--donor-orange);
+  border: 1px solid rgba(232, 101, 26, 0.2);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+/* ─── DARK MODE ─── */
+body.donor-dark .donations-subtitle {
+  color: #64748b;
+}
+
+body.donor-dark .donations-count {
+  background: rgba(232, 101, 26, 0.1);
+  border-color: rgba(232, 101, 26, 0.2);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .donations-table .donor-table__row {
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+
+  .donations-table .donor-table__row > span:nth-child(4),
+  .donations-table .donor-table__row > span:nth-child(5),
+  .donations-table .donor-table__row > span:nth-child(6) {
+    display: none;
+  }
+}
+
+/* ─── RECEIVED BY ─── */
+.donor-received-by {
+  color: #a855f7;
+  font-size: 14px;
+  font-weight: 600;
+}

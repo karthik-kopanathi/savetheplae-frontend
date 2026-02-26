@@ -1,0 +1,552 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.rf-page {
+  margin-top: 50px;
+  background: var(--orphanage-warm-white);
+  min-height: 100vh;
+  padding: 48px 56px 56px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--orphanage-text-dark);
+  animation: rf-fadeIn 0.5s ease forwards;
+}
+
+@keyframes rf-fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── HEADER ─── */
+.rf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--orphanage-border);
+}
+
+.rf-header__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--orphanage-forest);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 6px;
+}
+
+.rf-header__title svg { color: var(--orphanage-orange); }
+.rf-header__sub { font-size: 13px; color: var(--orphanage-text-muted); margin: 0; }
+
+.rf-count-badge {
+  font-size: 14px;
+  color: var(--orphanage-text-muted);
+  background: white;
+  border: 1px solid var(--orphanage-border);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: var(--orphanage-shadow-sm);
+  white-space: nowrap;
+}
+
+.rf-count-badge__num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--orphanage-orange);
+  margin-right: 4px;
+}
+
+/* ─── NGO LIST ─── */
+.rf-ngo-list { display: flex; flex-direction: column; gap: 28px; }
+
+/* ─── NGO CARD ─── */
+.rf-ngo-card {
+  background: white;
+  border-radius: 18px;
+  border: 1px solid var(--orphanage-border);
+  box-shadow: var(--orphanage-shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.rf-ngo-card:hover {
+  box-shadow: var(--orphanage-shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ─── HERO HEADER ─── */
+.rf-ngo-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 28px 32px 24px;
+  background: linear-gradient(135deg, var(--orphanage-forest) 0%, #2d5a27 100%);
+  color: white;
+  gap: 20px;
+}
+
+.rf-ngo-hero__left {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.rf-ngo-hero__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* ─── AVATAR ─── */
+.rf-ngo-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.rf-ngo-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rf-ngo-avatar span {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  font-family: 'Playfair Display', serif;
+}
+
+/* ─── NGO NAME / META ─── */
+.rf-ngo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 4px;
+}
+
+.rf-ngo-contact {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  margin: 0 0 6px;
+}
+
+.rf-ngo-location {
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rf-ngo-location svg { font-size: 11px; }
+
+/* ─── STOCK PILL ─── */
+.rf-ngo-stock-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  backdrop-filter: blur(4px);
+}
+
+.rf-ngo-since {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+/* ─── DETAILS STRIP ─── */
+.rf-ngo-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background: var(--orphanage-cream);
+  border-bottom: 1px solid var(--orphanage-border);
+}
+
+.rf-ngo-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 24px;
+  font-size: 13px;
+  color: var(--orphanage-text-mid);
+  border-right: 1px solid var(--orphanage-border);
+}
+
+.rf-ngo-detail-item:last-child { border-right: none; }
+
+.rf-ngo-detail-item__icon {
+  color: var(--orphanage-orange);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.rf-ngo-link {
+  color: var(--orphanage-leaf);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.rf-ngo-link:hover { color: var(--orphanage-orange); }
+
+/* ─── STOCK SECTION ─── */
+.rf-stock-section { padding: 24px 32px 28px; }
+
+.rf-stock-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--orphanage-forest);
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rf-stock-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: var(--orphanage-orange);
+  border-radius: 2px;
+}
+
+/* ─── TABLE ─── */
+.rf-table { display: flex; flex-direction: column; }
+
+.rf-table__row {
+  display: grid;
+  grid-template-columns: 2fr 0.8fr 1fr 1.4fr 1fr;
+  padding: 13px 12px;
+  border-bottom: 1px solid #f0ece4;
+  align-items: center;
+  border-radius: 8px;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--orphanage-text-mid);
+  transition: background 0.18s ease;
+}
+
+.rf-table__row:last-child { border-bottom: none; }
+.rf-table__row:hover:not(.rf-table__row--head) { background: var(--orphanage-cream); }
+
+.rf-table__row--head {
+  font-weight: 600;
+  color: var(--orphanage-text-muted);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  border-bottom: 2px solid var(--orphanage-border) !important;
+  border-radius: 0 !important;
+  padding-bottom: 12px;
+  margin-bottom: 4px;
+}
+
+.rf-table__row--head svg { margin-right: 5px; color: var(--orphanage-orange); font-size: 11px; }
+
+.rf-item-name { font-weight: 500; color: var(--orphanage-forest); }
+.rf-freshness { color: var(--orphanage-leaf); font-weight: 500; }
+
+/* ─── BUTTONS ─── */
+.rf-request-btn {
+  background: var(--orphanage-orange);
+  color: white;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(232,101,26,0.25);
+}
+
+.rf-request-btn:hover:not(:disabled) { background: var(--orphanage-leaf); transform: translateY(-1px); }
+.rf-request-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.rf-requested-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--orphanage-leaf-light);
+  color: var(--orphanage-leaf);
+  border: 1px solid rgba(45,90,39,0.25);
+  padding: 6px 12px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ─── COUNTDOWN ─── */
+.rf-countdown {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 70px;
+}
+
+.rf-countdown__text { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.rf-countdown--good .rf-countdown__text     { color: var(--orphanage-leaf); }
+.rf-countdown--warning .rf-countdown__text  { color: #d97706; }
+.rf-countdown--critical .rf-countdown__text { color: #dc2626; }
+
+.rf-countdown__bar-wrap {
+  height: 4px;
+  background: #e8e3d8;
+  border-radius: 99px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.rf-countdown__bar {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  transition: width 1s linear;
+}
+
+.rf-countdown--good .rf-countdown__bar     { background: var(--orphanage-leaf); }
+.rf-countdown--warning .rf-countdown__bar  { background: #f59e0b; }
+.rf-countdown--critical .rf-countdown__bar { background: #ef4444; }
+
+.rf-spoiled {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid rgba(220,38,38,0.2);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.rf-muted { color: var(--orphanage-text-muted); }
+
+/* ─── EMPTY / LOADER ─── */
+.rf-empty {
+  background: white;
+  border-radius: 16px;
+  padding: 80px 40px;
+  text-align: center;
+  border: 1px solid var(--orphanage-border);
+}
+
+.rf-empty::before { content: '🏠'; display: block; font-size: 44px; margin-bottom: 14px; }
+.rf-empty p { color: var(--orphanage-text-muted); font-size: 15px; margin: 0; }
+
+.rf-ngo-empty {
+  color: var(--orphanage-text-muted);
+  font-size: 14px;
+  padding: 20px 0 8px;
+  text-align: center;
+}
+
+.rf-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--orphanage-orange);
+  animation: rf-pulse 1.5s infinite;
+}
+
+@keyframes rf-pulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+/* ─── DARK MODE ─── */
+body.orphanage-dark .rf-page           { background: #0f1117; }
+body.orphanage-dark .rf-header         { border-color: #252836; }
+body.orphanage-dark .rf-header__title  { color: #f1f5f9; }
+body.orphanage-dark .rf-count-badge    { background: #1a1d26; border-color: #252836; color: #64748b; }
+body.orphanage-dark .rf-ngo-card       { background: #1a1d26; border-color: #252836; }
+body.orphanage-dark .rf-ngo-hero       { background: linear-gradient(135deg, #0f1117 0%, #1a2e1a 100%); }
+body.orphanage-dark .rf-ngo-details    { background: #141620; border-color: #252836; }
+body.orphanage-dark .rf-ngo-detail-item { color: #94a3b8; border-color: #252836; }
+body.orphanage-dark .rf-stock-section  { background: #1a1d26; }
+body.orphanage-dark .rf-stock-title    { color: #f1f5f9; }
+body.orphanage-dark .rf-table__row     { border-color: #252836; color: #94a3b8; }
+body.orphanage-dark .rf-table__row:hover:not(.rf-table__row--head) { background: #1f2233; }
+body.orphanage-dark .rf-table__row--head { border-color: #252836 !important; color: #475569; }
+body.orphanage-dark .rf-item-name      { color: #f1f5f9; }
+body.orphanage-dark .rf-countdown__bar-wrap { background: #252836; }
+body.orphanage-dark .rf-spoiled        { background: rgba(220,38,38,0.12); border-color: rgba(220,38,38,0.25); }
+body.orphanage-dark .rf-empty          { background: #1a1d26; border-color: #252836; }
+body.orphanage-dark .rf-loader         { background: #0f1117; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .rf-page     { padding: 32px 20px; }
+  .rf-ngo-hero { flex-direction: column; }
+  .rf-ngo-hero__right { align-items: flex-start; }
+  .rf-ngo-details { flex-direction: column; }
+  .rf-ngo-detail-item { border-right: none; border-bottom: 1px solid var(--orphanage-border); }
+  .rf-stock-section { padding: 20px; }
+  .rf-table__row { grid-template-columns: 2fr 1fr 1.4fr; }
+  .rf-table__row > span:nth-child(3),
+  .rf-table__row > span:nth-child(5) { display: none; }
+}
+
+/* ─── OUT-OF-CITY SECTION ─── */
+.rf-out-of-city-toggle-wrap {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.rf-out-of-city-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.rf-out-of-city-divider__line {
+  flex: 1;
+  height: 1px;
+  background: var(--orphanage-border);
+}
+
+.rf-out-of-city-divider__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--orphanage-text-muted);
+  white-space: nowrap;
+}
+
+.rf-out-of-city-divider__label svg { color: var(--orphanage-orange); }
+
+/* toggle button */
+.rf-out-of-city-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  color: var(--orphanage-leaf);
+  border: 2px dashed var(--orphanage-leaf);
+  padding: 13px 28px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+}
+
+.rf-out-of-city-btn:hover:not(:disabled) {
+  background: var(--orphanage-leaf);
+  color: white;
+  border-style: solid;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45,90,39,0.22);
+}
+
+.rf-out-of-city-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* out-of-city empty text */
+.rf-out-empty {
+  color: var(--orphanage-text-muted);
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
+
+/* out-of-city NGO list */
+.rf-ngo-list--out-of-city {
+  margin-top: 8px;
+}
+
+/* header above out-of-city list */
+.rf-out-of-city-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, var(--orphanage-leaf-light), #f0f7ef);
+  border: 1px solid rgba(45,90,39,0.2);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--orphanage-leaf);
+}
+
+.rf-out-of-city-header svg { font-size: 16px; }
+
+.rf-out-of-city-count {
+  margin-left: auto;
+  background: var(--orphanage-leaf);
+  color: white;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+/* out-of-city card modifier — amber accent on left border */
+.rf-ngo-card--out-of-city {
+  border-left: 4px solid var(--orphanage-leaf);
+}
+
+/* banner inside out-of-city card */
+.rf-out-of-city-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--orphanage-leaf-light);
+  color: var(--orphanage-leaf);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 20px;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(45,90,39,0.15);
+}
+
+.rf-out-of-city-banner svg { font-size: 12px; }
+
+/* dark mode additions */
+body.orphanage-dark .rf-out-of-city-btn     { background: #1a1d26; border-color: #2d5a27; color: #4ade80; }
+body.orphanage-dark .rf-out-of-city-btn:hover:not(:disabled) { background: #2d5a27; color: white; border-color: #2d5a27; }
+body.orphanage-dark .rf-out-of-city-header  { background: rgba(45,90,39,0.15); border-color: rgba(45,90,39,0.3); color: #4ade80; }
+body.orphanage-dark .rf-out-of-city-banner  { background: rgba(45,90,39,0.15); color: #4ade80; border-color: rgba(45,90,39,0.2); }
+body.orphanage-dark .rf-out-of-city-divider__line { background: #252836; }

@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ─── PAGE ─── */
+.dnp-page {
+  background: var(--donor-warm-white);
+  min-height: 100vh;
+  padding: 48px 56px 56px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--donor-text-dark);
+  animation: dnp-fadeIn 0.5s ease forwards;
+}
+
+@keyframes dnp-fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── HEADER ─── */
+.dnp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--donor-border);
+}
+
+.dnp-header__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--donor-forest);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 6px;
+}
+
+.dnp-header__title svg { color: var(--donor-orange); }
+
+.dnp-header__sub {
+  font-size: 13px;
+  color: var(--donor-text-muted);
+  margin: 0;
+}
+
+.dnp-header__city {
+  color: var(--donor-orange);
+  font-weight: 600;
+}
+
+.dnp-count-badge {
+  font-size: 14px;
+  color: var(--donor-text-muted);
+  background: white;
+  border: 1px solid var(--donor-border);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: var(--donor-shadow-sm);
+  white-space: nowrap;
+}
+
+.dnp-count-badge__num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--donor-orange);
+  margin-right: 4px;
+}
+
+/* ─── GRID ─── */
+.dnp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ─── CARD ─── */
+.dnp-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--donor-border);
+  box-shadow: var(--donor-shadow-sm);
+  padding: 28px 24px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dnp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--donor-shadow-md);
+  border-color: var(--donor-orange);
+}
+
+/* Top accent bar */
+.dnp-card__accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--donor-orange), var(--donor-leaf));
+  border-radius: 16px 16px 0 0;
+}
+
+/* ─── AVATAR ─── */
+.dnp-card__avatar-wrap {
+  margin: 8px 0 16px;
+}
+
+.dnp-card__avatar-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--donor-border);
+  transition: border-color 0.25s;
+}
+
+.dnp-card:hover .dnp-card__avatar-img {
+  border-color: var(--donor-orange);
+}
+
+.dnp-card__avatar-initials {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--donor-forest), var(--donor-leaf));
+  color: var(--donor-cream);
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+}
+
+/* ─── CARD TEXT ─── */
+.dnp-card__name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--donor-forest);
+  margin: 0 0 4px;
+}
+
+.dnp-card__contact-person {
+  font-size: 12px;
+  color: var(--donor-text-muted);
+  margin: 0 0 16px;
+}
+
+/* ─── DETAILS ─── */
+.dnp-card__details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.dnp-card__detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--donor-text-mid);
+}
+
+.dnp-card__detail-icon {
+  color: var(--donor-orange);
+  font-size: 12px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.dnp-card__detail span {
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+/* ─── FOOTER ─── */
+.dnp-card__footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--donor-border);
+  width: 100%;
+  font-size: 11px;
+  color: var(--donor-text-muted);
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* ─── EMPTY ─── */
+.dnp-empty {
+  background: white;
+  border: 1px dashed var(--donor-border);
+  border-radius: 14px;
+  padding: 80px 40px;
+  text-align: center;
+  color: var(--donor-text-muted);
+  font-size: 15px;
+}
+
+.dnp-empty::before {
+  content: '🏢';
+  display: block;
+  font-size: 40px;
+  margin-bottom: 14px;
+}
+
+/* ─── LOADER ─── */
+.dnp-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--donor-orange);
+  animation: dnp-pulse 1.5s infinite;
+  background: var(--donor-warm-white);
+}
+
+@keyframes dnp-pulse {
+  0%   { opacity: 0.5; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* ─── DARK MODE ─── */
+body.donor-dark .dnp-page          { background: #0f1117; color: #f1f5f9; }
+body.donor-dark .dnp-header        { border-color: #252836; }
+body.donor-dark .dnp-header__title { color: #f1f5f9; }
+body.donor-dark .dnp-header__sub   { color: #64748b; }
+body.donor-dark .dnp-count-badge   { background: #1a1d26; border-color: #252836; color: #64748b; }
+body.donor-dark .dnp-card          { background: #1a1d26; border-color: #252836; }
+body.donor-dark .dnp-card:hover    { border-color: var(--donor-orange); }
+body.donor-dark .dnp-card__name    { color: #f1f5f9; }
+body.donor-dark .dnp-card__detail  { color: #94a3b8; }
+body.donor-dark .dnp-card__footer  { border-color: #252836; color: #475569; }
+body.donor-dark .dnp-card__avatar-img { border-color: #252836; }
+body.donor-dark .dnp-empty         { background: #1a1d26; border-color: #252836; }
+body.donor-dark .dnp-loader        { background: #0f1117; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .dnp-page   { padding: 32px 20px; }
+  .dnp-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .dnp-grid   { grid-template-columns: 1fr; }
+}

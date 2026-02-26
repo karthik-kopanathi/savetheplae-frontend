@@ -1,0 +1,741 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ─── CSS VARIABLES ─── */
+:root {
+  --orphanage-forest:       #1a2e1a;
+  --orphanage-leaf:         #2d5a27;
+  --orphanage-leaf-light:   #e8f0e8;
+  --orphanage-cream:        #f5f0e8;
+  --orphanage-warm-white:   #faf8f3;
+  --orphanage-orange:       #e8651a;
+  --orphanage-orange-light: #fef0e7;
+  --orphanage-border:       #e8e3d8;
+  --orphanage-text-dark:    #1a1a1a;
+  --orphanage-text-mid:     #3a3a2a;
+  --orphanage-text-muted:   #7a7a6a;
+  --orphanage-shadow-sm:    0 2px 8px rgba(26,46,26,0.06);
+  --orphanage-shadow-md:    0 8px 28px rgba(26,46,26,0.10);
+}
+
+/* ─── LAYOUT ─── */
+.orphanage-layout {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--orphanage-warm-white);
+  color: var(--orphanage-text-dark);
+}
+
+.orphanage-main {
+  flex: 1;
+  margin-left: 64px;
+  transition: margin-left 0.3s ease;
+}
+
+.orphanage-sidebar:hover ~ .orphanage-main { margin-left: 220px; }
+
+/* ─── SIDEBAR ─── */
+.orphanage-sidebar {
+  position: fixed;
+  left: 0; top: 0;
+  height: 100vh;
+  width: 64px;
+  background: var(--orphanage-forest);
+  transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+  overflow: hidden;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 20px rgba(26,46,26,0.15);
+}
+
+.orphanage-sidebar:hover { width: 220px; }
+
+.orphanage-sidebar::before {
+  content: '🏠';
+  position: absolute;
+  top: 20px; left: 16px;
+  font-size: 22px;
+  z-index: 2;
+}
+
+.orphanage-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  padding-top: 72px;
+  padding-bottom: 24px;
+}
+
+.orphanage-sidebar-top,
+.orphanage-sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 10px;
+}
+
+.orphanage-sidebar-bottom {
+  border-top: 1px solid rgba(245,240,232,0.1);
+  padding-top: 16px;
+}
+
+.orphanage-sidebar-nav a,
+.orphanage-sidebar-darkmode,
+.orphanage-sidebar-logout {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 12px;
+  color: rgba(245,240,232,0.65);
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.orphanage-sidebar-nav a svg,
+.orphanage-sidebar-darkmode svg,
+.orphanage-sidebar-logout svg {
+  font-size: 17px;
+  min-width: 17px;
+  flex-shrink: 0;
+}
+
+.orphanage-sidebar-nav a span:not(.orphanage-notif-badge),
+.orphanage-sidebar-darkmode span,
+.orphanage-sidebar-logout span {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.orphanage-sidebar:hover .orphanage-sidebar-nav a span:not(.orphanage-notif-badge),
+.orphanage-sidebar:hover .orphanage-sidebar-darkmode span,
+.orphanage-sidebar:hover .orphanage-sidebar-logout span { opacity: 1; }
+
+.orphanage-sidebar-nav a:hover,
+.orphanage-sidebar-darkmode:hover { background: rgba(245,240,232,0.1); color: var(--orphanage-cream); }
+
+.orphanage-sidebar-nav a.active {
+  background: var(--orphanage-orange);
+  color: white;
+  box-shadow: 0 4px 14px rgba(232,101,26,0.35);
+}
+
+.orphanage-sidebar-nav a.active:hover { background: var(--orphanage-orange); color: white; }
+
+.orphanage-sidebar-logout { color: rgba(245,240,232,0.5); }
+.orphanage-sidebar-logout:hover { background: rgba(239,68,68,0.15); color: #fca5a5; }
+
+/* ─── NOTIFICATION BADGE ─── */
+.orphanage-notif-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17px;
+}
+
+.orphanage-notif-badge {
+  position: absolute;
+  top: -6px; right: -8px;
+  background: var(--orphanage-orange);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  opacity: 1 !important;
+  z-index: 10;
+  border: 1.5px solid var(--orphanage-forest);
+}
+
+/* ─── DARK MODE SIDEBAR ─── */
+body.orphanage-dark .orphanage-sidebar           { background: #111827; }
+body.orphanage-dark .orphanage-sidebar-nav a.active { background: #ef4444; box-shadow: 0 4px 14px rgba(239,68,68,0.35); }
+body.orphanage-dark .orphanage-notif-badge        { border-color: #111827; }
+
+/* ─── MAIN PAGE ─── */
+.orphanage-page {
+  margin-top: 50px;
+  background: var(--orphanage-warm-white);
+  min-height: 100vh;
+  padding: 48px 56px 56px;
+  color: var(--orphanage-text-dark);
+  animation: orphanage-fadeIn 0.5s ease forwards;
+}
+
+@keyframes orphanage-fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── HEADER ─── */
+.orphanage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--orphanage-border);
+  gap: 16px;
+}
+
+.orphanage-header__left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.orphanage-header__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--orphanage-forest);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.orphanage-header__date {
+  font-size: 13px;
+  color: var(--orphanage-text-muted);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  margin: 0;
+}
+
+/* ─── HEADER ACTIONS (refresh + request food) ─── */
+.orphanage-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* refresh button */
+.orphanage-refresh-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--orphanage-border);
+  background: white;
+  color: var(--orphanage-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.22s ease;
+  flex-shrink: 0;
+}
+
+.orphanage-refresh-btn:hover:not(:disabled) {
+  border-color: var(--orphanage-orange);
+  color: var(--orphanage-orange);
+  box-shadow: var(--orphanage-shadow-sm);
+}
+
+.orphanage-refresh-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.orphanage-refresh-btn--spinning svg {
+  animation: orphanage-spin 0.7s linear infinite;
+}
+
+@keyframes orphanage-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── REQUEST FOOD BUTTON ── */
+.orphanage-request-food-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--orphanage-orange);
+  color: white;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  box-shadow: 0 4px 14px rgba(232,101,26,0.30);
+  white-space: nowrap;
+}
+
+.orphanage-request-food-btn:hover {
+  background: var(--orphanage-leaf);
+  box-shadow: 0 6px 20px rgba(45,90,39,0.28);
+  transform: translateY(-2px);
+}
+
+.orphanage-request-food-btn svg { font-size: 15px; }
+
+/* ─── STATS GRID ─── */
+.orphanage-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.orphanage-stat-card {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid var(--orphanage-border);
+  box-shadow: var(--orphanage-shadow-sm);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.orphanage-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  border-radius: 14px 0 0 14px;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.orphanage-stat-card--blue::before   { background: #3b82f6; }
+.orphanage-stat-card--green::before  { background: var(--orphanage-leaf); }
+.orphanage-stat-card--orange::before { background: var(--orphanage-orange); }
+
+.orphanage-stat-card:hover { transform: translateY(-4px); box-shadow: var(--orphanage-shadow-md); border-color: transparent; }
+.orphanage-stat-card:hover::before { opacity: 1; }
+
+.orphanage-stat-card__icon-wrap {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.orphanage-stat-card__icon-wrap--blue   { background: #eff6ff; }
+.orphanage-stat-card__icon-wrap--green  { background: var(--orphanage-leaf-light); }
+.orphanage-stat-card__icon-wrap--orange { background: var(--orphanage-orange-light); }
+
+.orphanage-stat-card__icon            { font-size: 22px; }
+.orphanage-stat-card__icon--blue      { color: #3b82f6; }
+.orphanage-stat-card__icon--green     { color: var(--orphanage-leaf); }
+.orphanage-stat-card__icon--orange    { color: var(--orphanage-orange); }
+
+.orphanage-stat-card__label {
+  font-size: 12px;
+  color: var(--orphanage-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.orphanage-stat-card__value {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--orphanage-forest);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ─── TABLE CARD ─── */
+.orphanage-table-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid var(--orphanage-border);
+  box-shadow: var(--orphanage-shadow-sm);
+  transition: box-shadow 0.25s ease;
+  margin-bottom: 28px;
+}
+
+.orphanage-table-card:hover { box-shadow: var(--orphanage-shadow-md); }
+
+.orphanage-table-card__header { margin-bottom: 28px; }
+
+.orphanage-table-card__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--orphanage-forest);
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 12px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.orphanage-table-card__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 40px; height: 3px;
+  background: var(--orphanage-orange);
+  border-radius: 99px;
+}
+
+/* ─── TABLE COUNT PILL ─── */
+.orphanage-table-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--orphanage-orange-light);
+  color: var(--orphanage-orange);
+  border: 1px solid rgba(232,101,26,0.2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 20px;
+  margin-left: 4px;
+}
+
+/* ─── TABLE ─── */
+.orphanage-table { display: flex; flex-direction: column; }
+
+.orphanage-table__row {
+  display: grid;
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0ece4;
+  align-items: center;
+  border-radius: 8px;
+  transition: background 0.18s ease;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--orphanage-text-mid);
+}
+
+/* default 4-col */
+.orphanage-table__row--4col { grid-template-columns: 2fr 1fr 1fr 1fr; }
+
+/* 5-col (food, serves, date, from, status) */
+.orphanage-table__row--5col { grid-template-columns: 2fr 0.7fr 1fr 1.3fr 1fr; }
+
+.orphanage-table__row:last-child  { border-bottom: none; }
+.orphanage-table__row:hover:not(.orphanage-table__row--head) { background: var(--orphanage-cream); }
+
+.orphanage-table__row--head {
+  font-weight: 600;
+  color: var(--orphanage-text-muted);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  border-bottom: 2px solid var(--orphanage-border) !important;
+  border-radius: 0 !important;
+  padding-bottom: 14px;
+  margin-bottom: 4px;
+}
+
+.orphanage-table__row--head svg { margin-right: 5px; color: var(--orphanage-orange); font-size: 11px; }
+
+/* ─── FOOD NAME ─── */
+.orphanage-food-name {
+  font-weight: 500;
+  color: var(--orphanage-forest);
+}
+
+/* ─── SOURCE column ─── */
+.orphanage-source {
+  font-size: 13px;
+  color: var(--orphanage-leaf);
+  font-weight: 500;
+}
+
+/* ─── BADGES ─── */
+.orphanage-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.orphanage-badge--pending   { background: var(--orphanage-orange-light); color: var(--orphanage-orange);   border: 1px solid rgba(232,101,26,0.25); }
+.orphanage-badge--accepted  { background: var(--orphanage-leaf-light);   color: var(--orphanage-leaf);     border: 1px solid rgba(45,90,39,0.25); }
+.orphanage-badge--completed { background: #eff6ff;                        color: #3b82f6;                   border: 1px solid rgba(59,130,246,0.25); }
+
+/* ─── EMPTY INLINE ─── */
+.orphanage-empty-inline {
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--orphanage-text-muted);
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.orphanage-empty-inline p { margin: 0; }
+
+/* empty state CTA button */
+.orphanage-empty-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--orphanage-orange-light);
+  color: var(--orphanage-orange);
+  border: 1px solid rgba(232,101,26,0.3);
+  padding: 9px 18px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.orphanage-empty-cta:hover {
+  background: var(--orphanage-orange);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(232,101,26,0.25);
+}
+
+/* ─── TABLE CARD HEADER ROW (title + action button side by side) ─── */
+.orphanage-table-card__header--row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* ─── SEE ALL DONATIONS BUTTON ─── */
+.orphanage-see-all-btn {
+  background: white;
+  color: var(--orphanage-text-mid);
+  border: 1px solid var(--orphanage-border);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-bottom: 12px; /* align with title baseline */
+}
+
+.orphanage-see-all-btn:hover {
+  border-color: var(--orphanage-orange);
+  color: var(--orphanage-orange);
+  box-shadow: var(--orphanage-shadow-sm);
+  transform: translateY(-1px);
+}
+
+body.orphanage-dark .orphanage-see-all-btn {
+  background: #1a1d26;
+  border-color: #252836;
+  color: #94a3b8;
+}
+
+body.orphanage-dark .orphanage-see-all-btn:hover {
+  border-color: var(--orphanage-orange);
+  color: var(--orphanage-orange);
+}
+.orphanage-btn-secondary {
+  background: white;
+  color: var(--orphanage-text-mid);
+  border: 1px solid var(--orphanage-border);
+  padding: 7px 16px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.orphanage-btn-secondary:hover { border-color: var(--orphanage-orange); color: var(--orphanage-orange); box-shadow: var(--orphanage-shadow-sm); }
+
+/* ─── LOADER ─── */
+.orphanage-loader {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--orphanage-orange);
+  animation: orphanage-pulse 1.5s infinite;
+  background: var(--orphanage-warm-white);
+}
+
+@keyframes orphanage-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+/* ─── DARK MODE ─── */
+body.orphanage-dark .orphanage-page           { background: #0f1117; color: #f1f5f9; }
+body.orphanage-dark .orphanage-header         { border-color: #252836; }
+body.orphanage-dark .orphanage-header__title  { color: #f1f5f9; }
+body.orphanage-dark .orphanage-header__date   { color: #64748b; }
+body.orphanage-dark .orphanage-stat-card      { background: #1a1d26; border-color: #252836; }
+body.orphanage-dark .orphanage-stat-card__value { color: #f1f5f9; }
+body.orphanage-dark .orphanage-stat-card__label { color: #64748b; }
+body.orphanage-dark .orphanage-table-card     { background: #1a1d26; border-color: #252836; }
+body.orphanage-dark .orphanage-table-card__title { color: #f1f5f9; }
+body.orphanage-dark .orphanage-table__row     { border-color: #252836; color: #94a3b8; }
+body.orphanage-dark .orphanage-table__row:hover:not(.orphanage-table__row--head) { background: #1f2233; }
+body.orphanage-dark .orphanage-table__row--head { border-color: #252836 !important; color: #475569; }
+body.orphanage-dark .orphanage-food-name      { color: #f1f5f9; }
+body.orphanage-dark .orphanage-source         { color: #4ade80; }
+body.orphanage-dark .orphanage-table-count    { background: rgba(232,101,26,0.1); border-color: rgba(232,101,26,0.2); }
+body.orphanage-dark .orphanage-refresh-btn    { background: #1a1d26; border-color: #252836; color: #64748b; }
+body.orphanage-dark .orphanage-refresh-btn:hover:not(:disabled) { border-color: var(--orphanage-orange); color: var(--orphanage-orange); }
+body.orphanage-dark .orphanage-request-food-btn { box-shadow: none; }
+body.orphanage-dark .orphanage-empty-inline   { color: #475569; }
+body.orphanage-dark .orphanage-empty-cta      { background: rgba(232,101,26,0.1); border-color: rgba(232,101,26,0.3); color: var(--orphanage-orange); }
+body.orphanage-dark .orphanage-empty-cta:hover { background: var(--orphanage-orange); color: white; }
+body.orphanage-dark .orphanage-btn-secondary  { background: #1a1d26; border-color: #252836; color: #94a3b8; }
+body.orphanage-dark .orphanage-loader         { background: #0f1117; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1100px) {
+  .orphanage-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .orphanage-page       { padding: 32px 20px; }
+  .orphanage-stats-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .orphanage-header     { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .orphanage-header__actions { align-self: flex-start; }
+  .orphanage-request-food-btn span { display: none; }  /* icon-only on mobile */
+  .orphanage-request-food-btn { padding: 10px 14px; }
+  /* hide From + Status columns on small screens, keep food/serves/date */
+  .orphanage-table__row--5col { grid-template-columns: 2fr 0.6fr 1fr; }
+  .orphanage-table__row--5col > span:nth-child(4),
+  .orphanage-table__row--5col > span:nth-child(5) { display: none; }
+}
+
+/* ─── QUICK IMPACT CARD ─── */
+.orphanage-impact-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--orphanage-border);
+  box-shadow: var(--orphanage-shadow-sm);
+  padding: 28px 32px;
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 0.8fr;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
+}
+
+.orphanage-impact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--orphanage-orange), var(--orphanage-leaf));
+}
+
+.orphanage-impact-card:hover { box-shadow: var(--orphanage-shadow-md); }
+
+.orphanage-impact-card__left {
+  display: flex; align-items: center; gap: 16px;
+}
+
+.orphanage-impact-card__icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--orphanage-orange-light), #fde8d8);
+  color: var(--orphanage-orange);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+
+.orphanage-impact-card__label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--orphanage-text-muted); font-weight: 500; margin: 0 0 4px;
+}
+
+.orphanage-impact-card__value {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--orphanage-forest); margin: 0 0 4px; line-height: 1;
+}
+
+.orphanage-impact-card__sub { font-size: 12px; color: var(--orphanage-text-muted); margin: 0; }
+
+.orphanage-impact-card__center {
+  border-left: 1px solid var(--orphanage-border);
+  border-right: 1px solid var(--orphanage-border);
+  padding: 0 32px;
+}
+
+.orphanage-impact-milestone__labels {
+  display: flex; justify-content: space-between; margin-bottom: 10px;
+}
+
+.orphanage-impact-milestone__current { font-size: 13px; font-weight: 600; color: var(--orphanage-forest); }
+.orphanage-impact-milestone__target  { font-size: 12px; color: var(--orphanage-text-muted); }
+
+.orphanage-impact-milestone__track {
+  height: 8px; background: var(--orphanage-cream);
+  border-radius: 99px; overflow: hidden; margin-bottom: 10px;
+}
+
+.orphanage-impact-milestone__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--orphanage-orange), #2d5a27);
+  border-radius: 99px; transition: width 1s ease; min-width: 4px;
+}
+
+.orphanage-impact-milestone__note {
+  font-size: 12px; color: var(--orphanage-text-muted); margin: 0; text-align: center;
+}
+
+.orphanage-impact-card__right {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 2px;
+}
+
+.orphanage-impact-card__fire { font-size: 26px; color: var(--orphanage-orange); margin-bottom: 4px; }
+.orphanage-impact-card__streak-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--orphanage-text-muted); margin: 0; }
+.orphanage-impact-card__streak-val   { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--orphanage-forest); line-height: 1; margin: 0; }
+.orphanage-impact-card__streak-unit  { font-size: 12px; color: var(--orphanage-text-muted); margin: 0; }
+
+/* dark mode */
+body.orphanage-dark .orphanage-impact-card         { background: #1a1d26; border-color: #252836; }
+body.orphanage-dark .orphanage-impact-card__value  { color: #f1f5f9; }
+body.orphanage-dark .orphanage-impact-card__icon   { background: rgba(232,101,26,0.12); }
+body.orphanage-dark .orphanage-impact-card__center { border-color: #252836; }
+body.orphanage-dark .orphanage-impact-milestone__current { color: #f1f5f9; }
+body.orphanage-dark .orphanage-impact-milestone__track   { background: #252836; }
+body.orphanage-dark .orphanage-impact-card__streak-val   { color: #f1f5f9; }
+
+@media (max-width: 900px) {
+  .orphanage-impact-card { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .orphanage-impact-card__center {
+    grid-column: 1 / -1;
+    border-left: none; border-right: none;
+    border-top: 1px solid var(--orphanage-border);
+    border-bottom: 1px solid var(--orphanage-border);
+    padding: 20px 0;
+  }
+}

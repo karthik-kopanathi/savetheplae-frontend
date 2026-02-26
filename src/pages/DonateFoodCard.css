@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ─── VARIABLES ─── */
+:root {
+  --df-forest:       #1a2e1a;
+  --df-leaf:         #2d5a27;
+  --df-leaf-light:   #e8f0e8;
+  --df-cream:        #f5f0e8;
+  --df-warm-white:   #faf8f3;
+  --df-orange:       #e8651a;
+  --df-orange-light: #fef0e7;
+  --df-gold:         #c9a84c;
+  --df-border:       #e8e3d8;
+  --df-text:         #1a1a1a;
+  --df-text-mid:     #3a3a2a;
+  --df-text-muted:   #7a7a6a;
+  --df-red:          #dc2626;
+  --df-shadow-sm:    0 2px 8px rgba(26,46,26,0.06);
+  --df-shadow-lg:    0 20px 60px rgba(26,46,26,0.16);
+}
+
+/* ─── OVERLAY ─── */
+.donate-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 46, 26, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+/* ─── CARD ─── */
+.donate-card {
+  background: white;
+  width: 90%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 36px 32px 28px;
+  border-radius: 18px;
+  position: relative;
+  border: 1px solid var(--df-border);
+  box-shadow: var(--df-shadow-lg);
+  animation: df-scaleIn 0.25s cubic-bezier(0.16,1,0.3,1);
+  font-family: 'DM Sans', sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: var(--df-border) transparent;
+}
+
+/* Top accent bar */
+.donate-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--df-orange), var(--df-leaf));
+  border-radius: 18px 18px 0 0;
+}
+
+@keyframes df-scaleIn {
+  from { transform: scale(0.94); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* ─── TITLE ─── */
+.donate-card h2 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin: 0 0 24px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--df-forest);
+  letter-spacing: 0.2px;
+}
+
+/* ─── CLOSE ─── */
+.donate-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--df-text-muted);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.donate-close:hover {
+  background: var(--df-orange-light);
+  color: var(--df-orange);
+}
+
+/* ─── INPUTS & TEXTAREA ─── */
+.donate-form input,
+.donate-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--df-border);
+  background: var(--df-warm-white);
+  color: var(--df-text);
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+
+.donate-form input::placeholder,
+.donate-form textarea::placeholder {
+  color: var(--df-text-muted);
+}
+
+.donate-form input:focus,
+.donate-form textarea:focus {
+  border-color: var(--df-orange);
+  background: var(--df-orange-light);
+  box-shadow: 0 0 0 3px rgba(232,101,26,0.10);
+}
+
+.donate-form textarea {
+  resize: vertical;
+  max-height: 80px;
+  min-height: 44px;
+}
+
+/* ─── ITEM ROW ─── */
+.donate-item-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.donate-item-row span {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.donate-item-row input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* ─── EXTRA ROW ─── */
+.donate-extra-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.donate-extra-row span {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.donate-extra-row input,
+.donate-extra-row textarea {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* ─── REMOVE BUTTON ─── */
+.donate-remove-btn {
+  background: #fef2f2;
+  color: var(--df-red);
+  border: 1px solid rgba(220,38,38,0.2);
+  padding: 0 12px;
+  height: 38px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.donate-remove-btn:hover {
+  background: var(--df-red);
+  color: white;
+  border-color: var(--df-red);
+}
+
+/* ─── ADD ITEM BUTTON ─── */
+.donate-add-btn {
+  background: var(--df-leaf-light);
+  color: var(--df-leaf);
+  border: 1px solid rgba(45,90,39,0.2);
+  padding: 8px 18px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  transition: all 0.22s ease;
+}
+
+.donate-add-btn:hover {
+  background: var(--df-leaf);
+  color: white;
+  border-color: var(--df-leaf);
+}
+
+/* ─── SUBMIT BUTTON ─── */
+.donate-submit-btn {
+  background: var(--df-orange);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: all 0.22s ease;
+  box-shadow: 0 4px 14px rgba(232,101,26,0.25);
+  position: relative;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.donate-submit-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.12);
+  transform: translateX(-100%);
+  transition: transform 0.28s ease;
+}
+
+.donate-submit-btn:hover::after { transform: translateX(0); }
+.donate-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(232,101,26,0.38);
+}
+
+
+/* ─── HOURS INPUT ─── */
+.donate-hours-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.donate-hours-input {
+  width: 90px;
+  flex: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--df-border);
+  background: var(--df-warm-white);
+  color: var(--df-text);
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  box-sizing: border-box;
+}
+
+.donate-hours-input:focus {
+  border-color: var(--df-orange);
+  background: var(--df-orange-light);
+  box-shadow: 0 0 0 3px rgba(232,101,26,0.10);
+}
+
+.donate-hours-unit {
+  font-size: 14px;
+  color: var(--df-text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ─── LEGACY CLASSES (kept for compat) ─── */
+.donate-time-row  { align-items: center; }
+.donate-label     { font-size: 14px; color: var(--df-text-muted); white-space: nowrap; }
+.donate-time-input {
+  width: 110px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--df-border);
+  background: var(--df-warm-white);
+  color: var(--df-text);
+  font-family: 'DM Sans', sans-serif;
+}
+.donate-icon { font-size: 16px; }

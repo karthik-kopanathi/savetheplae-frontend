@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ─── CSS VARIABLES ─── */
+:root {
+  --login-forest:        #1a2e1a;
+  --login-leaf:          #2d5a27;
+  --login-cream:         #f5f0e8;
+  --login-orange:        #e8651a;
+  --login-orange-light:  #f5895a;
+  --login-gold:          #c9a84c;
+  --login-border:        rgba(245, 240, 232, 0.15);
+  --login-border-hover:  rgba(245, 240, 232, 0.35);
+  --login-text:          rgba(245, 240, 232, 0.85);
+  --login-text-muted:    rgba(245, 240, 232, 0.5);
+}
+
+/* ─── PAGE BACKGROUND ─── */
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a2e1a 0%, #2d5a27 50%, #1a2e1a 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Subtle depth glow */
+.login-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 25% 40%, rgba(232, 101, 26, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 50% at 80% 70%, rgba(45, 90, 39, 0.4) 0%, transparent 60%);
+  z-index: 0;
+}
+
+/* ─── GLASS WRAPPER ─── */
+.login-wrapper {
+  margin-top: 50px;
+  position: relative;
+  z-index: 1;
+  width: 420px;
+  height: auto;
+  background: rgba(26, 46, 26, 0.45);
+  border: 1px solid var(--login-border);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(245, 240, 232, 0.08);
+  border-radius: 18px;
+  color: var(--login-text);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ─── BACK ARROW ─── */
+.login-back-arrow {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--login-text-muted);
+  letter-spacing: 0.3px;
+  transition: color 0.2s ease;
+}
+
+.login-back-arrow:hover {
+  color: var(--login-cream);
+}
+
+.login-back-arrow svg {
+  position: relative;
+  top: 1px;
+}
+
+/* ─── FORM ─── */
+.login-form-box {
+  width: 100%;
+  padding: 52px 40px 40px;
+  color: var(--login-text);
+}
+
+/* ─── TITLE ─── */
+.login-form-box h1 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--login-cream);
+  margin: 0 0 24px 0;
+  letter-spacing: 0.2px;
+}
+
+/* ─── INPUT BOX ─── */
+.login-input-box {
+  position: relative;
+  width: 100%;
+  height: 46px;
+  margin: 16px 0;
+}
+
+.login-input-box input,
+.login-role-select {
+  width: 100%;
+  height: 100%;
+  background: rgba(245, 240, 232, 0.07);
+  border: 1px solid var(--login-border);
+  border-radius: 8px;
+  color: var(--login-cream);
+  padding: 0 44px 0 16px;
+  outline: none;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  box-sizing: border-box;
+}
+
+.login-input-box input::placeholder {
+  color: var(--login-text-muted);
+}
+
+.login-input-box input:focus,
+.login-role-select:focus {
+  border-color: var(--login-orange);
+  background: rgba(232, 101, 26, 0.08);
+  box-shadow: 0 0 0 3px rgba(232, 101, 26, 0.12);
+}
+
+/* ─── ICON ─── */
+.login-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--login-text-muted);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* ─── DROPDOWN ─── */
+.login-role-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.login-role-select option {
+  background: var(--login-forest);
+  color: var(--login-cream);
+}
+
+/* Custom dropdown arrow */
+.login-input-box::after {
+  content: "▾";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--login-text-muted);
+  pointer-events: none;
+}
+
+/* ─── REMEMBER / FORGOT ─── */
+.login-remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin: 4px 0 18px;
+  color: var(--login-text-muted);
+}
+
+.login-remember-forgot label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.login-remember-forgot a {
+  color: var(--login-text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.login-remember-forgot a:hover {
+  color: var(--login-orange);
+}
+
+/* ─── BUTTONS ─── */
+.login-btn {
+  width: 100%;
+  height: 46px;
+  border-radius: 8px;
+  border: none;
+  background: var(--login-orange);
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: all 0.22s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(232, 101, 26, 0.3);
+}
+
+.login-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.28s ease;
+}
+
+.login-btn:hover::after {
+  transform: translateX(0);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(232, 101, 26, 0.42);
+}
+
+.login-google-btn {
+  width: 100%;
+  height: 46px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(245, 240, 232, 0.95);
+  color: #3a3a2a;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.login-google-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── SIGNUP LINK ─── */
+.login-signup-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--login-text-muted);
+}
+
+.login-signup-link a {
+  color: var(--login-orange);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.login-signup-link a:hover {
+  color: var(--login-gold);
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .login-wrapper {
+    width: 90%;
+  }
+}
