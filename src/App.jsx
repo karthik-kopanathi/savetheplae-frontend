@@ -11,7 +11,7 @@ import Notifications from "./pages/Notifications";
 import { DonorDashboardLayout, DonorDashboard } from "./pages/DonorDashboard";
 import { NgoDashboardLayout, NgoDashboard } from "./pages/NgoDashboard";
 import { OrphanageDashboardLayout, OrphanageDashboard } from "./pages/OrphanageDashboard";
-import PickupDetails from "./pages/Pickupdetails";
+import PickupDetails from "./pages/PickupDetails";
 import NgoSettings from "./pages/NgoSettings";
 import NgoFoodStock from "./pages/NgoFoodStock";
 import NgoPartners from "./pages/NgoPartners";
